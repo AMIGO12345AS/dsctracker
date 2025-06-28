@@ -1,0 +1,1442 @@
+/* Global Styles */
+:root {
+    --primary-color: #2c3e50;
+    --secondary-color: #3498db;
+    --accent-color: #e74c3c;
+    --background-color: #f5f6fa;
+    --text-color: #2c3e50;
+    --border-color: #dcdde1;
+    --success-color: #2ecc71;
+    --warning-color: #f1c40f;
+    --danger-color: #e74c3c;
+    --status-header-height: 40px; /* Define status header height */
+    --top-banner-height: 60px;   /* Define top banner height */
+    --dashboard-margin: 16px; /* Define dashboard margin (top/bottom) */
+    --dashboard-padding-x: 20px; /* Define horizontal padding for dashboard */
+    --quadrant-padding: 18px; /* Default padding for quadrants */
+    --grid-gap: 20px; /* Gap between dashboard grid items */
+}
+
+html,
+body {
+    height: 100%;
+    overflow: hidden; /* Prevent scrolling on the html/body itself */
+    margin: 0; /* Ensure no default margin */
+    padding: 0; /* Ensure no default padding */
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box; /* Crucial for predictable sizing */
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: var(--background-color);
+    color: var(--text-color);
+    line-height: 1.6;
+    display: flex;
+    flex-direction: column; /* Organize content vertically */
+    height: 100vh; /* Ensure body takes full viewport height */
+    overflow: hidden; /* Prevent body scrolling */
+}
+
+/* Layout */
+.section {
+    /* Removed padding as it's now defined in specific elements */
+    flex-shrink: 0; /* Prevent sections from shrinking excessively */
+}
+
+.hidden {
+    display: none !important;
+}
+
+.hidden-by-search {
+    display: none !important;
+}
+
+/* Login Section */
+.login-container {
+    max-width: 800px;
+    margin: 40px auto;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    padding: 30px;
+    flex-shrink: 0; /* Prevent it from shrinking */
+}
+
+.login-container h2 {
+    text-align: center;
+    color: var(--primary-color);
+    margin-bottom: 30px;
+}
+
+/* User Selection */
+.user-selection {
+    background: white;
+    border-radius: 8px;
+}
+
+.tabs {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.tab-btn {
+    flex: 1;
+    padding: 12px;
+    border: none;
+    background: var(--background-color);
+    color: var(--text-color);
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.tab-btn.active {
+    background: var(--secondary-color);
+    color: white;
+}
+
+.search-filter {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.search-filter input,
+.search-filter select {
+    padding: 10px;
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    flex: 1;
+}
+
+.user-list {
+    max-height: 400px; /* Give a max-height */
+    overflow-y: auto; /* Enable scrolling */
+    padding-right: 5px; /* Prevent scrollbar from overlapping content */
+}
+
+.users-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 15px;
+    padding: 10px;
+}
+
+.user-card {
+    background: white;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    padding: 15px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.user-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.user-info h4 {
+    margin-bottom: 8px;
+    color: var(--primary-color);
+}
+
+.role-badge,
+.status-badge {
+    display: inline-block;
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-size: 0.8em;
+    margin-right: 5px;
+}
+
+.role-badge {
+    background: var(--secondary-color);
+    color: white;
+}
+
+.status-badge {
+    background: var(--success-color);
+    color: white;
+}
+
+.status-badge.inactive {
+    background: var(--danger-color);
+}
+
+/* Dashboard */
+#dashboard {
+    flex-grow: 1; /* Allow it to take all remaining space */
+    display: flex; /* Make it a flex container */
+    flex-direction: column; /* Stack top-banner and dashboard-grid */
+    overflow: hidden; /* Prevent #dashboard itself from scrolling */
+    padding: 0 var(--dashboard-padding-x);
+    box-sizing: border-box;
+}
+
+.top-banner {
+    background: white;
+    padding: 12px 24px;
+    border-radius: 10px;
+    margin-bottom: 0;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    font-size: 1.05em;
+    flex-shrink: 0; /* Prevent it from shrinking */
+    height: var(--top-banner-height); /* Use defined height */
+    display: flex; /* Make it a flex container */
+    align-items: center; /* Vertically center content */
+    justify-content: space-between; /* Distribute items */
+}
+
+.user-info {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+#logoutBtn {
+    padding: 8px 15px;
+    background: var(--accent-color);
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+#logoutBtn:hover {
+    background: #c0392b;
+}
+
+.renewal-radar {
+    background: var(--background-color);
+    padding: 15px;
+    border-radius: 8px;
+}
+
+.radar-content {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 15px;
+    margin-top: 15px;
+}
+
+.radar-section {
+    background: white;
+    padding: 15px;
+    border-radius: 6px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+}
+
+/* Dashboard Grid Layout */
+.dashboard-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    /* Use minmax(0, 1fr) for grid rows to allow content to shrink/grow */
+    grid-template-rows: minmax(0, 1fr) minmax(0, 1fr); 
+    gap: var(--grid-gap);
+    width: 100%;
+    max-width: 1400px; /* Limit max width for very large screens */
+    /* Calculate height dynamically based on viewport minus fixed headers and margins */
+    height: calc(100vh - (var(--status-header-height) + var(--top-banner-height) + (var(--dashboard-margin) * 2)));
+    margin: var(--dashboard-margin) auto; /* Center the grid with defined margin */
+    padding: 0;
+    box-sizing: border-box;
+    overflow: hidden; /* Prevent overall dashboard grid scrolling */
+}
+
+.dashboard-quadrant {
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+    padding: var(--quadrant-padding);
+    display: flex;
+    flex-direction: column;
+    min-width: 0; /* Allow content to shrink */
+    min-height: 0; /* Crucial for flex/grid items within a flexible container */
+    overflow: hidden; /* Prevent quadrant itself from overflowing */
+}
+
+.dashboard-quadrant > div {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    min-height: 0; /* Allow inner containers to shrink */
+    overflow: hidden; /* Prevent inner containers from overflowing the quadrant */
+}
+
+.leaders-grid,
+.employees-grid {
+    flex-grow: 1; /* Allow these grids to grow */
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    min-height: 0;
+}
+
+.leaders-grid .grid-container-scroll,
+.employees-grid .grid-5x4 {
+    flex-grow: 1;
+    min-height: 0;
+    overflow-y: auto; /* Allow internal scrolling for content */
+    padding-right: 5px; /* Space for scrollbar */
+}
+
+.section-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+    flex-shrink: 0; /* Prevent header from shrinking */
+}
+
+.section-controls {
+    display: flex;
+    gap: 10px;
+}
+
+.search-input,
+.filter-select {
+    padding: 8px;
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+}
+
+/* DSC Boxes */
+.dsc-boxes-grid {
+    flex-grow: 1; /* Allow this grid to grow and take available space */
+    display: flex;
+    flex-direction: column;
+    overflow: hidden; /* Hide overflow of this box */
+    min-height: 0; /* Needed for flex children to shrink */
+}
+
+.grid-2x4 {
+    display: grid;
+    /* Adapt columns for better fit on desktop, ensuring enough space for 8 boxes */
+    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr)); 
+    grid-auto-rows: minmax(80px, auto); /* Ensure rows have a minimum height and adjust */
+    gap: 12px;
+    padding: 8px;
+    flex-grow: 1;
+    overflow-y: auto; /* Enable vertical scrolling if content overflows */
+    padding-right: 5px; /* Space for scrollbar */
+    min-height: 0; /* Needed for grid items to shrink */
+}
+
+.dsc-box {
+    background: var(--background-color);
+    border-radius: 8px;
+    padding: 12px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    min-height: 80px;
+}
+
+.dsc-box:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.dsc-box.available {
+    border-left: 4px solid var(--success-color);
+}
+
+.dsc-box.in_use {
+    border-left: 4px solid var(--warning-color);
+}
+
+.dsc-box.out {
+    border-left: 4px solid var(--danger-color);
+}
+
+/* Search Container Specific Styles */
+.dashboard-quadrant.quadrant-search {
+    display: flex;
+    flex-direction: column;
+    overflow: visible; /* Changed from hidden to visible */
+    min-height: 0;
+}
+
+.search-container {
+    padding: 0;
+    position: relative;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    min-height: 0;
+    overflow: visible; /* Changed from hidden to visible */
+}
+.dsc-search-bar {
+    margin-bottom: 8px;
+    flex-shrink: 0; /* Prevent search bar from shrinking */
+}
+
+.autocomplete-dropdown {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 60px; /* Adjusted to a fixed pixel value to ensure it appears directly below the search bar */
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.10);
+    z-index: 1002; /* Ensure dropdown is above other elements */
+    max-height: 220px;
+    overflow-y: auto;
+    border: 1px solid var(--border-color);
+    border-top: none; /* No top border, blends with search bar visually */
+    margin-top: 0;
+}
+.autocomplete-dropdown:not(.hidden) {
+    display: block;
+}
+.autocomplete-dropdown.hidden {
+    display: none;
+}
+.autocomplete-suggestion {
+    padding: 10px 16px;
+    cursor: pointer;
+    font-size: 1em;
+    border-bottom: 1px solid #f0f0f0;
+    background: #fff;
+    transition: background 0.2s;
+}
+.autocomplete-suggestion:last-child {
+    border-bottom: none;
+}
+.autocomplete-suggestion:hover, .autocomplete-suggestion.active {
+    background: #f3f8fd;
+}
+.autocomplete-suggestion mark {
+    background: #ffe066;
+    color: #222;
+    padding: 0 2px;
+    border-radius: 2px;
+}
+
+/* Modals */
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+.modal-content {
+    background: white;
+    padding: 30px;
+    border-radius: 12px;
+    width: 90%;
+    max-width: 750px;
+    position: relative;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.25);
+    max-height: calc(100vh - 40px); /* Account for padding */
+    overflow-y: auto;
+    box-sizing: border-box;
+}
+
+.close {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    font-size: 24px;
+    cursor: pointer;
+    color: var(--text-color);
+}
+
+.sub-boxes-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); /* Adapt columns for subboxes */
+    gap: 18px;
+    margin-top: 20px;
+}
+
+.subbox-card {
+    background: var(--background-color);
+    border-radius: 8px;
+    padding: 15px;
+    min-height: 120px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.subbox-title {
+    font-weight: bold;
+    margin-bottom: 8px;
+}
+.dsc-list {
+    margin-bottom: 8px;
+    flex-grow: 1; /* Allow DSC list to take space */
+    overflow-y: auto; /* Enable scrolling for DSC list within subbox */
+    padding-right: 5px; /* Prevent scrollbar from overlapping */
+    min-height: 0; /* Needed for flex children to shrink */
+}
+.dsc-list-item {
+    background: #fff;
+    border-radius: 4px;
+    padding: 6px 10px;
+    margin-bottom: 4px;
+    font-size: 0.95em;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.03);
+}
+.add-dsc-btn {
+    background: var(--secondary-color);
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    padding: 6px 12px;
+    cursor: pointer;
+    font-size: 0.95em;
+    transition: background 0.2s;
+    flex-shrink: 0; /* Prevent button from shrinking */
+}
+.add-dsc-btn:hover {
+    background: #2980b9;
+}
+
+/* Forms */
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+    color: var(--text-color);
+}
+
+.form-group input[type="text"],
+.form-group input[type="date"],
+.form-group select {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+}
+
+button[type="submit"] {
+    background: var(--secondary-color);
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+button[type="submit"]:hover {
+    background: #2980b9;
+}
+
+/* Responsive Design */
+/* Adjust dashboard grid for smaller desktop screens */
+@media (max-width: 1400px) {
+.dashboard-grid {
+        max-width: 1200px;
+        gap: 15px;
+}
+}
+
+@media (max-width: 1100px) {
+    .dashboard-grid {
+        grid-template-columns: 1fr;
+        grid-template-rows: repeat(4, minmax(0, 1fr));
+        height: auto; /* Allow height to be determined by content */
+        min-height: 0;
+        margin: var(--dashboard-margin);
+        gap: 16px;
+        overflow-y: auto; /* Enable scrolling for the dashboard itself on smaller screens */
+    }
+    .dashboard-quadrant {
+        padding: 16px;
+        max-height: none;
+    }
+    .modal-content {
+        max-height: calc(100vh - 80px); /* Adjust modal height for smaller screens */
+}
+    .sub-boxes-grid {
+        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); /* Adjust subbox columns */
+    }
+}
+
+@media (max-width: 768px) {
+    .users-grid {
+        grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    }
+
+    .grid-2x4 {
+        grid-template-columns: 1fr;
+    }
+
+    .tabs {
+        flex-direction: column;
+    }
+
+    .employee-seat, .leader-seat {
+        height: 70px;
+    }
+    .employee-icon, .leader-icon {
+        width: 36px;
+        height: 36px;
+    }
+    .employee-label, .leader-label {
+        font-size: 0.9em;
+    }
+
+    .modal-content {
+        padding: 20px;
+    }
+    .sub-boxes-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 600px) {
+    .dsc-search-bar {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 6px;
+    }
+    .search-result-count {
+        text-align: left;
+    }
+}
+
+@media (max-width: 480px) {
+    .dashboard-grid {
+        margin: 8px;
+        gap: 8px;
+    }
+    .dashboard-quadrant {
+        padding: 10px;
+    }
+    .search-filter-select {
+        font-size: 0.9em;
+        padding: 4px 8px;
+    }
+    .login-container {
+        margin: 20px auto;
+        padding: 20px;
+    }
+    .modal-content {
+        padding: 15px;
+    }
+}
+
+.status-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: #fff;
+    padding: 10px 30px;
+    border-bottom: 1px solid var(--border-color);
+    font-size: 1.2em;
+    font-weight: bold;
+    flex-shrink: 0; /* Prevent header from shrinking */
+    height: var(--status-header-height); /* Use defined height */
+}
+.status-led {
+    display: inline-block;
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    margin-left: 10px;
+    background: #e74c3c; /* default red */
+    border: 2px solid #ccc;
+    vertical-align: middle;
+    box-shadow: 0 0 4px #aaa;
+}
+.status-led.connected {
+    background: #2ecc71;
+    box-shadow: 0 0 8px #2ecc71;
+}
+.status-led.disconnected {
+    background: #e74c3c;
+    box-shadow: 0 0 8px #e74c3c;
+}
+
+.employee-seat {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: #f4f6fa;
+    border-radius: 12px;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.04);
+    padding: 12px 0 8px 0;
+    margin: 0;
+    min-width: 0;
+    min-height: 0;
+    height: 80px;
+    width: 100%;
+    transition: box-shadow 0.2s;
+}
+.employee-icon {
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    background: #e9e9e9; /* Neutral background for the icon container */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative; /* For pseudo-elements positioning */
+    margin-bottom: 4px;
+    color: #555; /* General icon color */
+    box-shadow: 0 1px 2px rgba(0,0,0,0.04);
+    overflow: hidden; /* Hide overflowing parts of the icon */
+    font-size: 1.2em;
+
+    /* Head */
+    &::before {
+        content: '';
+        position: absolute;
+        top: 8px; /* Position the head */
+        width: 14px;
+        height: 14px;
+        border-radius: 50%;
+        background: #999; /* Head color */
+        z-index: 1;
+    }
+
+    /* Body */
+    &::after {
+        content: '';
+        position: absolute;
+        bottom: -12px; /* Position the body (crescent) */
+        width: 30px;
+        height: 30px;
+        border-radius: 50%;
+        background: #777; /* Body color */
+        transform: scaleX(1.3); /* Make it wider for crescent shape */
+        border-top: 10px solid transparent; /* Create crescent effect */
+    }
+}
+.employee-label {
+    font-size: 1em;
+    color: #333;
+    font-weight: 500;
+    text-align: center;
+}
+
+/* Leader Seat Styles (similar to employee-seat) */
+.leader-seat {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: #e0f2fe; /* Lighter blue for leaders */
+    border-radius: 12px;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.04);
+    padding: 12px 0 8px 0;
+    margin: 0;
+    min-width: 0;
+    min-height: 0;
+    height: 80px;
+    width: 100%;
+    transition: box-shadow 0.2s;
+}
+.leader-icon {
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    background: #90caf9; /* Medium blue for leaders */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2em;
+    font-weight: bold;
+    margin-bottom: 4px;
+    color: #1976d2; /* Darker blue for leaders */
+    box-shadow: 0 1px 2px rgba(0,0,0,0.04);
+}
+.leader-label {
+    font-size: 1em;
+    color: #333;
+    font-weight: 500;
+    text-align: center;
+}
+
+/* Adjust leadersContainer to be a grid as well */
+#leadersContainer.grid-5x4 {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(100px, 1fr)); /* Flexible columns for 5 leaders */
+    gap: 8px;
+    padding: 4px;
+    min-height: 0;
+    max-height: 100%;
+    overflow: auto; /* Ensure internal scrolling for leaders */
+    align-items: stretch; /* Ensure items stretch to fill cells */
+}
+#employeesContainer.grid-5x4 {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(100px, 1fr)); /* Responsive columns for employees */
+    gap: 15px;
+    padding: 10px;
+    min-height: 0;
+    max-height: 100%;
+    overflow: auto; /* Ensure internal scrolling for employees */
+    align-items: stretch;
+}
+
+/* Highlighting for selected DSCs and users */
+.highlighted-dsc {
+    border: 2px solid var(--secondary-color);
+    box-shadow: 0 0 10px rgba(52, 152, 219, 0.5);
+    transform: scale(1.02);
+    transition: all 0.2s ease-in-out;
+}
+
+.highlighted-user {
+    border: 2px solid var(--success-color);
+    box-shadow: 0 0 10px rgba(46, 204, 113, 0.5);
+    transform: scale(1.02);
+    transition: all 0.2s ease-in-out;
+}
+
+/* Upload DSC Styles */
+.upload-btn {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.upload-btn:hover {
+    background-color: #45a049;
+}
+
+.add-btn {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.add-btn:hover {
+    background-color: #0056b3;
+}
+
+.upload-container {
+    padding: 20px;
+}
+
+.upload-instructions {
+    margin-bottom: 20px;
+}
+
+.upload-instructions h4 {
+    margin-bottom: 10px;
+    color: #333;
+}
+
+.upload-instructions ol {
+    padding-left: 20px;
+    color: #666;
+}
+
+.upload-instructions li {
+    margin-bottom: 8px;
+}
+
+.upload-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+.download-btn {
+    background-color: #2196F3;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+    width: fit-content;
+}
+
+.download-btn:hover {
+    background-color: #1976D2;
+}
+
+#uploadDSCForm {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+#dscFileInput {
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+.upload-submit-btn {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.upload-submit-btn:hover {
+    background-color: #45a049;
+}
+
+.upload-status {
+    margin-top: 15px;
+    padding: 10px;
+    border-radius: 4px;
+}
+
+.upload-status.success {
+    background-color: #dff0d8;
+    color: #3c763d;
+    border: 1px solid #d6e9c6;
+}
+
+.upload-status.error {
+    background-color: #f2dede;
+    color: #a94442;
+    border: 1px solid #ebccd1;
+}
+
+.employees-grid {
+    min-height: 0;
+    overflow: auto; /* Ensure internal scrolling for employees */
+}
+
+/* Top Left: Leaders Section */
+.leaders-section {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    gap: 20px;
+}
+
+.my-dsc-panel {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    border-radius: 10px;
+    padding: 20px;
+    color: white;
+    flex-shrink: 0;
+}
+
+.my-dsc-panel .section-header h3 {
+    color: white;
+    margin-bottom: 15px;
+    font-size: 1.2em;
+}
+
+.my-dsc-content {
+    min-height: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.no-dsc-message {
+    font-style: italic;
+    opacity: 0.8;
+}
+
+.dsc-info {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+    padding: 15px;
+    width: 100%;
+}
+
+.dsc-info h4 {
+    margin-bottom: 10px;
+    color: white;
+}
+
+.dsc-details {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    font-size: 0.9em;
+}
+
+.dsc-action-btn {
+    background: rgba(255, 255, 255, 0.2);
+    color: white;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    padding: 8px 16px;
+    border-radius: 6px;
+    cursor: pointer;
+    margin-top: 10px;
+    transition: all 0.3s ease;
+}
+
+.dsc-action-btn:hover {
+    background: rgba(255, 255, 255, 0.3);
+}
+
+.leaders-grid {
+    flex: 1;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+}
+
+#leadersContainer.grid-2x3 {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+    gap: 15px;
+    overflow-y: auto;
+    padding: 10px;
+    flex: 1;
+}
+
+/* Bottom Right: Search & Actions */
+.search-actions-container {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    gap: 20px;
+}
+
+.search-container {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.leader-actions {
+    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+    border-radius: 10px;
+    padding: 20px;
+    flex-shrink: 0;
+}
+
+.action-buttons {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    margin-top: 15px;
+}
+
+.action-btn {
+    background: var(--secondary-color);
+    color: white;
+    border: none;
+    padding: 12px 16px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 0.9em;
+    transition: all 0.3s ease;
+    text-align: center;
+}
+
+.action-btn:hover {
+    background: #2980b9;
+    transform: translateY(-1px);
+}
+
+/* Employee and Leader Seats */
+.employee-seat {
+    background: white;
+    border: 2px solid var(--border-color);
+    border-radius: 8px;
+    padding: 12px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.employee-seat:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.employee-seat.has-dsc {
+    border-color: var(--success-color);
+    background: linear-gradient(135deg, #f0fff4 0%, #e6fffa 100%);
+}
+
+.employee-seat.has-dsc::before {
+    content: "✓";
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    background: var(--success-color);
+    color: white;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.8em;
+    font-weight: bold;
+}
+
+.leader-seat {
+    background: white;
+    border: 2px solid var(--border-color);
+    border-radius: 8px;
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.leader-seat:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.leader-seat.has-dsc {
+    border-color: var(--success-color);
+    background: linear-gradient(135deg, #f0fff4 0%, #e6fffa 100%);
+}
+
+.leader-seat.has-dsc::before {
+    content: "✓";
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    background: var(--success-color);
+    color: white;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.8em;
+    font-weight: bold;
+}
+
+/* Modals */
+.modal {
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.modal-content {
+    background: white;
+    border-radius: 12px;
+    padding: 30px;
+    max-width: 90%;
+    max-height: 90%;
+    overflow-y: auto;
+    position: relative;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+.large-modal {
+    width: 80%;
+    max-width: 1200px;
+}
+
+/* Audit Log Styles */
+.audit-controls {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+.audit-filters {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    flex: 1;
+}
+
+.audit-filters input,
+.audit-filters select {
+    padding: 8px 12px;
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    font-size: 0.9em;
+}
+
+.export-btn {
+    background: var(--success-color);
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 0.9em;
+    transition: background-color 0.3s ease;
+}
+
+.export-btn:hover {
+    background: #27ae60;
+}
+
+.audit-log-container {
+    max-height: 400px;
+    overflow-y: auto;
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    background: var(--background-color);
+}
+
+.audit-entry {
+    background: white;
+    padding: 15px;
+    border-bottom: 1px solid var(--border-color);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.audit-entry:last-child {
+    border-bottom: none;
+}
+
+.audit-info {
+    flex: 1;
+}
+
+.audit-action {
+    font-weight: bold;
+    color: var(--primary-color);
+    margin-bottom: 5px;
+}
+
+.audit-details {
+    font-size: 0.9em;
+    color: var(--text-color);
+}
+
+.audit-timestamp {
+    font-size: 0.8em;
+    color: #666;
+    text-align: right;
+}
+
+/* Settings Styles */
+.settings-tabs {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.settings-tab {
+    background: none;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-bottom: 2px solid transparent;
+    transition: all 0.3s ease;
+    color: var(--text-color);
+}
+
+.settings-tab.active {
+    border-bottom-color: var(--secondary-color);
+    color: var(--secondary-color);
+    font-weight: bold;
+}
+
+.settings-content {
+    margin-bottom: 20px;
+}
+
+.settings-tab-content {
+    display: none;
+}
+
+.settings-tab-content.active {
+    display: block;
+}
+
+.settings-tab-content h4 {
+    margin-bottom: 15px;
+    color: var(--primary-color);
+}
+
+.settings-actions {
+    display: flex;
+    gap: 15px;
+    justify-content: flex-end;
+}
+
+.save-btn {
+    background: var(--success-color);
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 1em;
+    transition: background-color 0.3s ease;
+}
+
+.save-btn:hover {
+    background: #27ae60;
+}
+
+.reset-btn {
+    background: var(--warning-color);
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 1em;
+    transition: background-color 0.3s ease;
+}
+
+.reset-btn:hover {
+    background: #f39c12;
+}
+
+/* User Management Styles */
+.user-management-controls {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+.add-user-btn {
+    background: var(--success-color);
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 1em;
+    transition: background-color 0.3s ease;
+}
+
+.add-user-btn:hover {
+    background: #27ae60;
+}
+
+.user-filters {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.user-filters input,
+.user-filters select {
+    padding: 8px 12px;
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    font-size: 0.9em;
+}
+
+.user-management-container {
+    max-height: 400px;
+    overflow-y: auto;
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    background: var(--background-color);
+}
+
+.user-management-entry {
+    background: white;
+    padding: 15px;
+    border-bottom: 1px solid var(--border-color);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.user-management-entry:last-child {
+    border-bottom: none;
+}
+
+.user-management-info {
+    flex: 1;
+}
+
+.user-management-name {
+    font-weight: bold;
+    color: var(--primary-color);
+    margin-bottom: 5px;
+}
+
+.user-management-role {
+    font-size: 0.9em;
+    color: var(--text-color);
+}
+
+.user-management-actions {
+    display: flex;
+    gap: 10px;
+}
+
+.user-action-btn {
+    background: var(--secondary-color);
+    color: white;
+    border: none;
+    padding: 6px 12px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 0.8em;
+    transition: background-color 0.3s ease;
+}
+
+.user-action-btn:hover {
+    background: #2980b9;
+}
+
+.user-action-btn.danger {
+    background: var(--danger-color);
+}
+
+.user-action-btn.danger:hover {
+    background: #c0392b;
+} 
